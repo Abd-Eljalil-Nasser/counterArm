@@ -44,7 +44,7 @@ typedef unsigned char 	uint8;
 typedef signed char 	suint8;
 typedef unsigned short 	uint16;
 typedef signed short 	suint16;
-typedef unsigned long 	uint32;
+typedef unsigned long 	uint32_t;
 typedef signed long 	suint32;
 typedef  float 			float32;
 typedef  double 		float64;

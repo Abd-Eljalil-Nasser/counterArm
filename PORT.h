@@ -1,12 +1,24 @@
 #ifndef PORT_H
 #define PORT_H
 
-#define A 0
-#define B 1
-#define C 2
-#define D 3
-#define E 4
-#define F 5
+
+typedef enum
+{
+
+PORT_A,PORT_B,PORT_C,PORT_D,PORT_E,PORT_F
+
+
+}Port;
+
+
+typedef enum
+{
+
+PORT_PIN_IN,PORT_PIN_OUT
+
+
+}Port_PinDirectionType;
+
 
 // uint8 one byte usingned integer
 
@@ -15,7 +27,7 @@ void Port_Init( uint8 port_index);
 5) by enabling the clock, unlocking the port, and
 making the selected mode digital*/
 
-void Port_SetPinDirection(uint8 port_index, uint8 pins_mask , _Bool I_O );
+void Port_SetPinDirection(uint8 port_index, uint8 pins_mask , Port_PinDirectionType I_O );
 /*Change the direction of the selected pins by
 pins_mask in the port selected by port_index
 I_O indecated if the pin is input or output 1 for output

@@ -40,6 +40,21 @@
 #ifndef __TM4C123GH6PM_H__
 #define __TM4C123GH6PM_H__
 
+
+//****************************************************************
+// Simple Bit definitions to avoid magic numbers in the source code
+//*****************************************************************
+
+#define BIT_0	0
+#define BIT_1	1
+#define BIT_2	2
+#define BIT_3	3
+#define BIT_4	4
+#define BIT_5	5
+#define BIT_6	6
+#define BIT_7	7
+
+
 //*****************************************************************************
 //
 // Interrupt assignments

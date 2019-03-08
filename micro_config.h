@@ -14,6 +14,8 @@
 #ifndef MICRO_CONFIG_H
 #define MICRO_CONFIG_H
 
+#include "tm4c123gh6pm.h"
+
 
 #define GPIO_PORT_A_APB_BASE_ADDRESSE		(0x40004000)
 #define GPIO_PORT_B_APB_BASE_ADDRESSE		(0x40005000)

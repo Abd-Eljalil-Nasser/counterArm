@@ -1,6 +1,8 @@
 #ifndef PORT_H
 #define PORT_H
 
+#include "micro_config.h"
+#include "macros.h"
 
 typedef enum
 {
@@ -22,7 +24,7 @@ PORT_PIN_IN,PORT_PIN_OUT
 
 // uint8 one byte usingned integer
 
-void Port_Init( uint8 port_index);
+void Port_Init( Port );
 /*Initialize port based on selected port_index (0 to
 5) by enabling the clock, unlocking the port, and
 making the selected mode digital*/

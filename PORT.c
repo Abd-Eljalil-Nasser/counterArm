@@ -2,37 +2,37 @@
 #include "PORT.h"
 
 
-void Port_Init(Port PORT_NAME)
+void Port_Init(Port port_index)
 {
 	
 	 uint32_t  Port_base;
 	
-	SET_BIT(SYSCTL_RCGCGPIO_R,PORT_NAME);
-	while(BIT_IS_CLEAR(SYSCTL_PRGPIO_R,PORT_NAME));
+	SET_BIT(SYSCTL_RCGCGPIO_R,port_index);
+	while(BIT_IS_CLEAR(SYSCTL_PRGPIO_R,port_index));
 
 	
-switch(PORT_NAME)
-{
-	
-	case PORT_A : Port_base=GPIO_PORT_A_APB_BASE_ADDRESSE;
-								break;
-	
-	case PORT_B : Port_base=GPIO_PORT_B_APB_BASE_ADDRESSE;
-								break;
-				
-	case PORT_C : Port_base=GPIO_PORT_C_APB_BASE_ADDRESSE;
-								break;
-				
-	case PORT_D : Port_base=GPIO_PORT_D_APB_BASE_ADDRESSE;
-								break;
-				
-	case PORT_E : Port_base=GPIO_PORT_E_APB_BASE_ADDRESSE;
-								break;
-				
-	case PORT_F : Port_base=GPIO_PORT_F_APB_BASE_ADDRESSE;
-								break;
+	switch(port_index)
+	{
 		
-}
+		case PORT_A : Port_base=GPIO_PORT_A_APB_BASE_ADDRESSE;
+									break;
+		
+		case PORT_B : Port_base=GPIO_PORT_B_APB_BASE_ADDRESSE;
+									break;
+					
+		case PORT_C : Port_base=GPIO_PORT_C_APB_BASE_ADDRESSE;
+									break;
+					
+		case PORT_D : Port_base=GPIO_PORT_D_APB_BASE_ADDRESSE;
+									break;
+					
+		case PORT_E : Port_base=GPIO_PORT_E_APB_BASE_ADDRESSE;
+									break;
+					
+		case PORT_F : Port_base=GPIO_PORT_F_APB_BASE_ADDRESSE;
+									break;
+			
+	}
 
 
 
@@ -61,4 +61,70 @@ switch(PORT_NAME)
         (*((volatile uint32_t *)((Port_base +GPIO_PORT_AMSEL_R_OFFSET))))&=~(0X0000001F);
 	
 	
+}
+
+void Port_SetPinDirection(uint8 port_index, uint8 pins_mask , Port_PinDirectionType I_O ){
+
+	
+	switch(port_index)
+	{
+		
+		case PORT_A : 
+			if (I_O){
+				GPIO_PORTA_DIR_R |= pins_mask; 
+			}else
+			{
+				GPIO_PORTA_DIR_R &= ~pins_mask;
+			}
+			
+									break;
+		
+		case PORT_B : 
+			if (I_O){
+				GPIO_PORTB_DIR_R |= pins_mask; 
+			}else
+			{
+				GPIO_PORTB_DIR_R &= ~pins_mask;
+			}
+									break;
+					
+		case PORT_C : 
+			if (I_O){
+				GPIO_PORTC_DIR_R |= pins_mask; 
+			}else
+			{
+				GPIO_PORTC_DIR_R &= ~pins_mask;
+			}
+									break;
+					
+		case PORT_D :
+			if (I_O){
+				GPIO_PORTD_DIR_R |= pins_mask; 
+			}else
+			{
+				GPIO_PORTD_DIR_R &= ~pins_mask;
+			}
+									break;
+					
+		case PORT_E : 
+			if (I_O){
+				GPIO_PORTE_DIR_R |= pins_mask; 
+			}else
+			{
+				GPIO_PORTE_DIR_R &= ~pins_mask;
+			}
+									break;
+					
+		case PORT_F :
+			if (I_O){
+				GPIO_PORTF_DIR_R |= pins_mask; 
+			}else
+			{
+				GPIO_PORTF_DIR_R &= ~pins_mask;
+			} 
+						break;
+			
+	}
+
+
 }

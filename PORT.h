@@ -25,7 +25,7 @@ PORT_PIN_IN,PORT_PIN_OUT
 
 // uint8 one byte usingned integer
 
-void Port_Init( Port );
+void Port_Init( Port port_index);
 /*Initialize port based on selected port_index (0 to
 5) by enabling the clock, unlocking the port, and
 making the selected mode digital*/

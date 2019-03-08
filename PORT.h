@@ -3,7 +3,7 @@
 
 #include "micro_config.h"
 #include "macros.h"
-#include "std_types"
+#include "std_types.h"
 
 typedef enum
 {

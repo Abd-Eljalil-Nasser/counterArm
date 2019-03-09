@@ -77,7 +77,7 @@ void Port_SetPinDirection(uint8 port_index, uint8 pins_mask , Port_PinDirectionT
 				GPIO_PORTA_DIR_R &= ~pins_mask;
 			}
 			
-									break;
+			break;
 		
 		case PORT_B : 
 			if (I_O){
@@ -86,7 +86,7 @@ void Port_SetPinDirection(uint8 port_index, uint8 pins_mask , Port_PinDirectionT
 			{
 				GPIO_PORTB_DIR_R &= ~pins_mask;
 			}
-									break;
+			break;
 					
 		case PORT_C : 
 			if (I_O){
@@ -95,7 +95,7 @@ void Port_SetPinDirection(uint8 port_index, uint8 pins_mask , Port_PinDirectionT
 			{
 				GPIO_PORTC_DIR_R &= ~pins_mask;
 			}
-									break;
+			break;
 					
 		case PORT_D :
 			if (I_O){
@@ -104,7 +104,7 @@ void Port_SetPinDirection(uint8 port_index, uint8 pins_mask , Port_PinDirectionT
 			{
 				GPIO_PORTD_DIR_R &= ~pins_mask;
 			}
-									break;
+			break;
 					
 		case PORT_E : 
 			if (I_O){
@@ -113,7 +113,7 @@ void Port_SetPinDirection(uint8 port_index, uint8 pins_mask , Port_PinDirectionT
 			{
 				GPIO_PORTE_DIR_R &= ~pins_mask;
 			}
-									break;
+			break;
 					
 		case PORT_F :
 			if (I_O){
@@ -122,7 +122,7 @@ void Port_SetPinDirection(uint8 port_index, uint8 pins_mask , Port_PinDirectionT
 			{
 				GPIO_PORTF_DIR_R &= ~pins_mask;
 			} 
-						break;
+			break;
 			
 	}
 

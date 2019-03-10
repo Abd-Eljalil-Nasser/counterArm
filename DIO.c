@@ -4,7 +4,7 @@
 // Toggle Function 
 
 
-void DIO_FlipPort (uint8 port_index, uint8 pins_mask) {
+void DIO_FlipPort (Port port_index, uint8 pins_mask) {
     switch (port_index) {
         // Port A
         case 0 : GPIO_PORTA_DATA_R = GPIO_PORTA_DATA_R ^ pins_mask;
@@ -37,7 +37,7 @@ void DIO_FlipPort (uint8 port_index, uint8 pins_mask) {
 
 //write_Port
 
-void DIO_WritePort(uint8 port_index , uint8 pins_mask, DIO_LevelType pin_level){
+void DIO_WritePort(Port port_index , uint8 pins_mask, DIO_LevelType pin_level){
 		switch (port_index) {
         // Port A
 				//check for the value of pin_level
@@ -96,10 +96,11 @@ void DIO_WritePort(uint8 port_index , uint8 pins_mask, DIO_LevelType pin_level){
    
         
     }
+  }
 	//DIO_ReadPort
 /*Return the value of the pins selected by
 pins_masks in the port selected by port_index*/
-uint8 DIO_ReadPort (uint8 port_index, uint8 pins_mask) {
+uint8 DIO_ReadPort (Port port_index, uint8 pins_mask) {
     switch (port_index) {
 	
         // Port A
@@ -128,6 +129,6 @@ uint8 DIO_ReadPort (uint8 port_index, uint8 pins_mask) {
 		
 		}
 		
-		}
-}
+	}
+
 	

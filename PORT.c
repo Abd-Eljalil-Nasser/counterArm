@@ -43,27 +43,27 @@ void Port_Init(Port port_index)
 
 	/*Commit Register*/
 					
-	(*((volatile uint32_t *)((Port_base +GPIO_PORT_CR_R_OFFSET ))))|=0x0000000F;
+	(*((volatile uint32_t *)((Port_base +GPIO_PORT_CR_R_OFFSET ))))|=0x000000FF;
 
 
 	/*Digital Enable Register*/
 	  			
-        (*((volatile uint32_t *)(Port_base +GPIO_PORT_DEN_R_OFFSET)))|=(0X0000001F);
+        (*((volatile uint32_t *)(Port_base +GPIO_PORT_DEN_R_OFFSET)))|=(0X000000FF);
 
 
 	/*Alternative Function Select Register*/
 				
-        (*((volatile uint32_t *)((Port_base +GPIO_PORT_AFSEL_R_OFFSET))))&=~(0X0000001F);
+        (*((volatile uint32_t *)((Port_base +GPIO_PORT_AFSEL_R_OFFSET))))&=~(0X000000FF);
 
 
 	/*Analog Mode Select Register */
 				
-        (*((volatile uint32_t *)((Port_base +GPIO_PORT_AMSEL_R_OFFSET))))&=~(0X0000001F);
+        (*((volatile uint32_t *)((Port_base +GPIO_PORT_AMSEL_R_OFFSET))))&=~(0X000000FF);
 	
 	
 }
 
-void Port_SetPinDirection(uint8 port_index, uint8 pins_mask , Port_PinDirectionType I_O )
+void Port_SetPinDirection(Port port_index, uint8 pins_mask , Port_PinDirectionType I_O )
 {
 
 	
@@ -130,7 +130,7 @@ void Port_SetPinDirection(uint8 port_index, uint8 pins_mask , Port_PinDirectionT
 
 }
 
-void Port_SetPinPullDown(uint8 port_index, uint8 pins_mask, uint8 enable)
+void Port_SetPinPullDown(Port port_index, uint8 pins_mask, uint8 enable)
 {
     if(enable)
     {
@@ -138,27 +138,28 @@ void Port_SetPinPullDown(uint8 port_index, uint8 pins_mask, uint8 enable)
         {
 
             case PORT_A :
-                SET_BIT(GPIO_PORTA_PDR_R,pins_mask);
+                GPIO_PORTA_PDR_R |= pins_mask;
                                         break;
 
             case PORT_B :
-                SET_BIT(GPIO_PORTB_PDR_R,pins_mask);
+                GPIO_PORTB_PDR_R |= pins_mask;
                                         break;
 
             case PORT_C :
-                SET_BIT(GPIO_PORTC_PDR_R,pins_mask);
+                GPIO_PORTC_PDR_R |= pins_mask;
                                         break;
 
             case PORT_D :
-                SET_BIT(GPIO_PORTD_PDR_R,pins_mask);
+                GPIO_PORTD_PDR_R |= pins_mask;
                                         break;
 
             case PORT_E :
-                SET_BIT(GPIO_PORTE_PDR_R,pins_mask);
+                GPIO_PORTE_PDR_R |= pins_mask;
                                         break;
 
             case PORT_F :
-                SET_BIT(GPIO_PORTF_PDR_R,pins_mask);
+                GPIO_PORTF_PDR_R |= pins_mask;
+                //SET_BIT(GPIO_PORTF_PDR_R,pins_mask);
                                         break;
 
         }
@@ -170,27 +171,27 @@ void Port_SetPinPullDown(uint8 port_index, uint8 pins_mask, uint8 enable)
         {
 
             case PORT_A :
-                RESET_BIT(GPIO_PORTA_PDR_R,pins_mask);
+                 GPIO_PORTA_PDR_R &= ~pins_mask;
                                         break;
 
             case PORT_B :
-                RESET_BIT(GPIO_PORTB_PDR_R,pins_mask);
+                GPIO_PORTB_PDR_R &= ~pins_mask;
                                         break;
 
             case PORT_C :
-                RESET_BIT(GPIO_PORTC_PDR_R,pins_mask);
+                GPIO_PORTC_PDR_R &= ~pins_mask;
                                         break;
 
             case PORT_D :
-                RESET_BIT(GPIO_PORTD_PDR_R,pins_mask);
+                GPIO_PORTD_PDR_R &= ~pins_mask;
                                         break;
 
             case PORT_E :
-                RESET_BIT(GPIO_PORTE_PDR_R,pins_mask);
+                GPIO_PORTE_PDR_R &= ~pins_mask;
                                         break;
 
             case PORT_F :
-                RESET_BIT(GPIO_PORTF_PDR_R,pins_mask);
+                GPIO_PORTF_PDR_R &= ~pins_mask;
                                         break;
 
         }

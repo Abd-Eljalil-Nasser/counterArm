@@ -17,7 +17,7 @@ typedef enum systickclock
 typedef enum systickinterrupt
 {
 
-INTERRUPT_DISABLED,INTERRUPT_ENABLED
+       INTERRUPT_DISABLED,INTERRUPT_ENABLED
 
 }SysTick_interrupt;
 
@@ -26,8 +26,8 @@ INTERRUPT_DISABLED,INTERRUPT_ENABLED
 typedef struct systickconfig
 {
  
-SysTick_clockSource Clock;
-SysTick_interrupt		Interrupt;	
+SysTick_clockSource    Clock;
+SysTick_interrupt      Interrupt;	
 
 }SysTick_Configure;
 

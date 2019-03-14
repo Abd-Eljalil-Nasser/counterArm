@@ -29,19 +29,19 @@ void SYSTICK_init(const SysTick_Configure * ptr_configure)
 	{
 		
 		case F_CPU_4:  
-								 RESET_BIT(NVIC_ST_CTRL_R,BIT_2);
+				 RESET_BIT(NVIC_ST_CTRL_R,BIT_2);
 								 
-								 NVIC_ST_RELOAD_R=4000-1;
+				 NVIC_ST_RELOAD_R=4000-1;
 	
 	
-								break;			
+				break;			
 		
 		case F_CPU:  
-								 SET_BIT(NVIC_ST_CTRL_R,BIT_2);
+				 SET_BIT(NVIC_ST_CTRL_R,BIT_2);
 								
-								 NVIC_ST_RELOAD_R=16000-1;
+				 NVIC_ST_RELOAD_R=16000-1;
 	
-								 break;			
+				 break;			
 	}
 
 	
@@ -49,12 +49,12 @@ void SYSTICK_init(const SysTick_Configure * ptr_configure)
 	{
 		
 		case INTERRUPT_DISABLED:  
-								 RESET_BIT(NVIC_ST_CTRL_R,BIT_1);
-                 break;			
+						 RESET_BIT(NVIC_ST_CTRL_R,BIT_1);
+                                                 break;			
 		
 		case INTERRUPT_ENABLED:  
-								 SET_BIT(NVIC_ST_CTRL_R,BIT_1);
-                 break;			
+						 SET_BIT(NVIC_ST_CTRL_R,BIT_1);
+                                                 break;			
 	}
 
 	

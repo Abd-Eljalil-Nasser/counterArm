@@ -26,5 +26,36 @@ void Port_SetPinPullDown(2,3,1);
 uint16 increment_counter = 0;
  
 }
-
+// portc pin 0 reset 
+//portc pin 1 increament
+//portc pin 2 increament
+while (1)
+{
+      if (DIO_ReadPort(2,0)==1)
+	    {
+           while (DIO_ReadPort(2,0)==1)
+           {;
+		   }
+        increment_counter =0;
+        }
+      else if (DIO_ReadPort(2,1)==1)
+        {
+           while (1)
+           {
+           increment_counter++;
+           SYSTICK_delay(200);
+               if (DIO_ReadPort(2,1)==1)
+               {
+               break;
+               }
+           }
+       }
+      else if (DIO_ReadPort(2,2)==1)
+	    {
+         increment_counter--;
+            while (DIO_ReadPort(2,2)==1)
+            {;
+            }
+        }
+}
 

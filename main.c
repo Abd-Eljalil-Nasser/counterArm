@@ -9,12 +9,15 @@ void main(void)
 //port A Port B as output for 7 segment display
 void Port_Init(0);
 void Port_Init(1);
-//Port C as input from push buttons
 void Port_Init(2);
+	
+//Port D as input from push buttons
+void Port_Init(3);
   
 //set direction for output ports"A , B"
 void Port_SetPinDirection(0,7 ,1);
 void Port_SetPinDirection(1,7,1);
+void Port_SetPinDirection(2,7,1);
 
 //set direction of port d as input
 void Port_SetPinDirection(3,3,0);

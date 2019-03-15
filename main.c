@@ -16,46 +16,48 @@ void Port_Init(2);
 void Port_SetPinDirection(0,7 ,1);
 void Port_SetPinDirection(1,7,1);
 
-//set direction of port c as input
-void Port_SetPinDirection(2,3,0);
+//set direction of port d as input
+void Port_SetPinDirection(3,3,0);
   
-// connect first 3 bit from port to pull down resitance
-void Port_SetPinPullDown(2,3,1);
+// connect first 3 bit from port d to pull down resitance
+void Port_SetPinPullDown(3,3,1);
   
 //our increment variable
 uint16 increment_counter = 0;
 // portc pin 0 reset 
 //portc pin 1 increament
 //portc pin 2 increament
+	
+
 while (1)
-{
-      if (DIO_ReadPort(2,0)==1)
-	    {
-           while (DIO_ReadPort(2,0)==1)
-           {;
-            }
-        increment_counter =0;
-        }
-      else if (DIO_ReadPort(2,1)==1)
-        {
-           while (1)
-           {
-           increment_counter++;
-           SYSTICK_delay(200);
-               if (DIO_ReadPort(2,1)==1)
-               {
-               break;
-               }
-           }
-       }
-      else if (DIO_ReadPort(2,2)==1)
-	    {
-         increment_counter--;
-            while (DIO_ReadPort(2,2)==1)
-            {;
-            }
-        }
-}
-}
+	{
+	      if (DIO_ReadPort(3,0)==1) //reset condition
+		{
+		   while (DIO_ReadPort(3,0)==1)
+		    {;
+		    }
+		   increment_counter =0;
+		}
+	      else if (DIO_ReadPort(3,1)==1) //increment condition
+		{
+		   while (1)
+		 	  {
+			       increment_counter++;
+			       SYSTICK_delay(200);
+			       if (DIO_ReadPort(3,1)==1)
+				       {
+				       break;
+				       }
+		           }
+	       }
+	      else if (DIO_ReadPort(3,2)==1) //decreament condition
+		    {
+		 	increment_counter--;
+		        while (DIO_ReadPort(3,2)==1)
+			    {;
+			    }	
+		    }
+	}//end of big while
+}//end of void
 
 

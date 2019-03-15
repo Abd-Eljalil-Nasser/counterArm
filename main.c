@@ -21,12 +21,16 @@ void Port_SetPinDirection(3,3,0);
   
 // connect first 3 bit from port d to pull down resitance
 void Port_SetPinPullDown(3,3,1);
-  
+
+ //initialization of 7-segment
+ //Please if you  add parameter to function tell us
+ Seven_Segment_init();
+
 //our increment variable
 uint16 increment_counter = 0;
-// portc pin 0 reset 
-//portc pin 1 increament
-//portc pin 2 increament
+// portd pin 0 reset 
+//portd pin 1 increament
+//portd pin 2 increament
 	
 
 while (1)
@@ -37,12 +41,16 @@ while (1)
 		    {;
 		    }
 		   increment_counter =0;
+		   //to display the result
+		   Seven_Segment_Display();
 		}
 	      else if (DIO_ReadPort(3,1)==1) //increment condition
 		{
 		   while (1)
 		 	  {
 			       increment_counter++;
+				   //to display the result
+		   		   Seven_Segment_Display();
 			       SYSTICK_delay(200);
 			       if (DIO_ReadPort(3,1)==1)
 				       {
@@ -52,7 +60,9 @@ while (1)
 	       }
 	      else if (DIO_ReadPort(3,2)==1) //decreament condition
 		    {
-		 	increment_counter--;
+		 		increment_counter--;
+				 //to display the result
+		   		 Seven_Segment_Display();
 		        while (DIO_ReadPort(3,2)==1)
 			    {;
 			    }	

@@ -13,5 +13,6 @@ void Seven_Segment_init();
 void Seven_Segment_Display();
 //to display the numbers
 
-void DecToBinary(int n); 
+
+void DecToBinary(int n, Port port_index); 
 //to convert decimal numbers to binary

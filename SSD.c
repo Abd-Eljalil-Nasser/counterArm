@@ -1,55 +1,68 @@
 #include "SSD.h"
-
+#include <stdlib.h>
 
 
 
 
 void Seven_Segment_init(uint8 pins_mask){
 	uint32_t delay;
-	SYSCTL_RCGCGPIO_R |= 0x07;
-	delay = 1; //dummy variable to check for the clock 
-	//initiating portA
+	SYSCTL_RCGCGPIO_R |= 0x07; //to connect the first 3 ports to the clock(not sure about it)
 	
-	GPIO_PORTA_AFSEL_R = 0;
-	GPIO_PORTA_AMSEL_R = 0;
-	GPIO_PORTA_PCTL_R = 0;
-	GPIO_PORTA_DIR_R = pins_mask;
-	GPIO_PORTA_DEN_R = pins_mask;
-	GPIO_PORTA_CR_R = pins_mask;
+	
+	//initiating portA
+	Port_Init(PORT_A);
+	Port_SetPinDirection(PORT_A, 0x3c , 1 ); // we put 1 because we want it to be output to the seven segment
+	//pins: PA2,PA3,PA4,PA5
+	
 	
 	//initiating portB
-	GPIO_PORTB_AFSEL_R = 0;
-	GPIO_PORTB_AMSEL_R = 0;
-	GPIO_PORTA_PCTL_R = 0;
-	GPIO_PORTB_DIR_R = pins_mask;
-	GPIO_PORTB_DEN_R = pins_mask;
-	GPIO_PORTB_CR_R = pins_mask;
+	Port_Init(PORT_B);
+	Port_SetPinDirection(PORT_B, 0xcc , 1 ); //pins: PB2,PB3,PB6,PB7
+	
 	
 	//initiating portC
-	GPIO_PORTC_AFSEL_R = 0;
-	GPIO_PORTC_AMSEL_R = 0;
-	GPIO_PORTA_PCTL_R = 0;
-	GPIO_PORTC_DIR_R = pins_mask;
-	GPIO_PORTC_DEN_R = pins_mask;
-	GPIO_PORTC_CR_R = pins_mask;
+	Port_Init(PORT_C);
+	Port_SetPinDirection(PORT_C, 0xF0 , 1 ); //pins: PC4,PC5,PC6,PC7
 	
 	
 }
 
-void DecToBinary(int n) {
-	int Bin[4];
+void DecToBinary_write(int n, Port port_index) {
+	char Bin[4];
+	int digit;
 	for(int i = 0; i<4 ; i++){
 		Bin[i] = n % 2;
 		n/= 2;
 	}
+	switch(port_index){
+		case PORT_A : PA2 = Bin[0]; //to write in portA
+			PA3 = Bin[1];
+		  PA4 = Bin[2];
+		  PA5 = Bin[3];
+		break;
+		
+		case PORT_B : PB2 = Bin[0]; //to write in portB
+			PB3 = Bin[1];
+		  PB6 = Bin[2];
+		  PB7 = Bin[3];
+		break;
+		
+					
+		case PORT_C : PC4 = Bin[0]; //to write in portC
+			PC5 = Bin[1];
+		  PC6 = Bin[2];
+		  PC7 = Bin[3];
+		break;
+	}
+		
 }
 	
 
 void Seven_Segment_Display(int digit1 , int digit2 , int digit3){
-		
-		DecToBinary(digit1);
-		DecToBinary(digit2);
-		DecToBinary(digit3);
+			
+		 DecToBinary(digit1 , PORT_A);
+		 DecToBinary(digit2 , PORT_B);
+		 DecToBinary(digit3 , PORT_C);
 }
 
 

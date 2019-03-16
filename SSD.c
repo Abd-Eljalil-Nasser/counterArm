@@ -60,9 +60,9 @@ void DecToBinary_write(int n, Port port_index) {
 
 void Seven_Segment_Display(int digit1 , int digit2 , int digit3){
 			
-		 DecToBinary(digit1 , PORT_A);
-		 DecToBinary(digit2 , PORT_B);
-		 DecToBinary(digit3 , PORT_C);
+		 DecToBinary_write(digit1 , PORT_A);
+		 DecToBinary_write(digit2 , PORT_B);
+		 DecToBinary_write(digit3 , PORT_C);
 }
 
 

@@ -4,7 +4,7 @@
 
 
 
-void Seven_Segment_init(uint8 pins_mask){
+void Seven_Segment_init(){
 	uint32_t delay;
 	SYSCTL_RCGCGPIO_R |= 0x07; //to connect the first 3 ports to the clock(not sure about it)
 	
@@ -42,7 +42,7 @@ void DecToBinary_write(int n, Port port_index) {
 		break;
 		
 		case PORT_B : PB2 = Bin[0]; //to write in portB
-			PB3 = Bin[1];
+		  PB3 = Bin[1];
 		  PB6 = Bin[2];
 		  PB7 = Bin[3];
 		break;
@@ -58,8 +58,16 @@ void DecToBinary_write(int n, Port port_index) {
 }
 	
 
-void Seven_Segment_Display(int digit1 , int digit2 , int digit3){
-			
+void Seven_Segment_Display(int digit){
+
+		uint8 buf [3];
+		uint8 digit1, digit2,digit3;
+		itoa(digit,buf,4);
+
+		digit1 = atoi(buf[0]);
+		digit2 = atoi(buf[1]);
+		digit3 = atoi(buf[2]);
+		
 		 DecToBinary_write(digit1 , PORT_A);
 		 DecToBinary_write(digit2 , PORT_B);
 		 DecToBinary_write(digit3 , PORT_C);

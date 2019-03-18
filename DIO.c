@@ -78,7 +78,7 @@ void DIO_WritePort(Port port_index , uint8 pins_mask, DIO_LevelType pin_level){
 
         // Port E
         case 4 : if(pin_level){
-					GPIO_PORTE_DAT_R |= pins_mask;
+					GPIO_PORTE_DATA_R |= pins_mask;
 				} 
 				else{
 							GPIO_PORTE_DATA_R &= ~(pins_mask);
@@ -87,7 +87,7 @@ void DIO_WritePort(Port port_index , uint8 pins_mask, DIO_LevelType pin_level){
         
         // Port F 
         case 5 : if(pin_level){
-					GPIO_PORTF_DATF_R |= pins_mask;
+					GPIO_PORTF_DATA_R |= pins_mask;
 				} 
 				else{
 							GPIO_PORTF_DATA_R &= ~(pins_mask);
